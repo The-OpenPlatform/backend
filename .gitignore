@@ -1,6 +1,13 @@
 # Created by https://www.toptal.com/developers/gitignore/api/go,windows,macos,linux,visualstudiocode,jetbrains+all,goland+all
 # Edit at https://www.toptal.com/developers/gitignore?templates=go,windows,macos,linux,visualstudiocode,jetbrains+all,goland+all
 
+# dotenv environment variable files
+.env
+.env.development.local
+.env.test.local
+.env.production.local
+.env.local
+
 ### Go ###
 # If you prefer the allow list template instead of the deny list, see community template:
 # https://github.com/github/gitignore/blob/main/community/Golang/Go.AllowList.gitignore
