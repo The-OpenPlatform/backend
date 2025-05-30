@@ -1,8 +1,8 @@
 syntax = "proto3";
 
-package modulespb;
+package modules;
 
-option go_package = "./internal/grpc/modules;modulespb";
+option go_package = "./internal/grpc/modules;modules";
 
 service ModulesService {
   rpc HealthCheck(HealthCheckRequest) returns (HealthCheckResponse);

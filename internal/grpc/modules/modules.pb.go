@@ -4,7 +4,7 @@
 // 	protoc        v5.29.3
 // source: internal/grpc/modules/modules.proto
 
-package modulespb
+package modules
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -409,7 +409,7 @@ var File_internal_grpc_modules_modules_proto protoreflect.FileDescriptor
 
 const file_internal_grpc_modules_modules_proto_rawDesc = "" +
 	"\n" +
-	"#internal/grpc/modules/modules.proto\x12\tmodulespb\"\x14\n" +
+	"#internal/grpc/modules/modules.proto\x12\amodules\"\x14\n" +
 	"\x12HealthCheckRequest\"-\n" +
 	"\x13HealthCheckResponse\x12\x16\n" +
 	"\x06status\x18\x01 \x01(\tR\x06status\"C\n" +
@@ -429,12 +429,12 @@ const file_internal_grpc_modules_modules_proto_rawDesc = "" +
 	"\auser_id\x18\x01 \x01(\tR\x06userId\"D\n" +
 	"\x0eDeleteResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12\x18\n" +
-	"\amessage\x18\x02 \x01(\tR\amessage2\x9e\x02\n" +
-	"\x0eModulesService\x12L\n" +
-	"\vHealthCheck\x12\x1d.modulespb.HealthCheckRequest\x1a\x1e.modulespb.HealthCheckResponse\x12C\n" +
-	"\bRegister\x12\x1a.modulespb.RegisterRequest\x1a\x1b.modulespb.RegisterResponse\x12:\n" +
-	"\x05Setup\x12\x17.modulespb.SetupRequest\x1a\x18.modulespb.SetupResponse\x12=\n" +
-	"\x06Delete\x12\x18.modulespb.DeleteRequest\x1a\x19.modulespb.DeleteResponseB#Z!./internal/grpc/modules;modulespbb\x06proto3"
+	"\amessage\x18\x02 \x01(\tR\amessage2\x8e\x02\n" +
+	"\x0eModulesService\x12H\n" +
+	"\vHealthCheck\x12\x1b.modules.HealthCheckRequest\x1a\x1c.modules.HealthCheckResponse\x12?\n" +
+	"\bRegister\x12\x18.modules.RegisterRequest\x1a\x19.modules.RegisterResponse\x126\n" +
+	"\x05Setup\x12\x15.modules.SetupRequest\x1a\x16.modules.SetupResponse\x129\n" +
+	"\x06Delete\x12\x16.modules.DeleteRequest\x1a\x17.modules.DeleteResponseB!Z\x1f./internal/grpc/modules;modulesb\x06proto3"
 
 var (
 	file_internal_grpc_modules_modules_proto_rawDescOnce sync.Once
@@ -450,24 +450,24 @@ func file_internal_grpc_modules_modules_proto_rawDescGZIP() []byte {
 
 var file_internal_grpc_modules_modules_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
 var file_internal_grpc_modules_modules_proto_goTypes = []any{
-	(*HealthCheckRequest)(nil),  // 0: modulespb.HealthCheckRequest
-	(*HealthCheckResponse)(nil), // 1: modulespb.HealthCheckResponse
-	(*RegisterRequest)(nil),     // 2: modulespb.RegisterRequest
-	(*RegisterResponse)(nil),    // 3: modulespb.RegisterResponse
-	(*SetupRequest)(nil),        // 4: modulespb.SetupRequest
-	(*SetupResponse)(nil),       // 5: modulespb.SetupResponse
-	(*DeleteRequest)(nil),       // 6: modulespb.DeleteRequest
-	(*DeleteResponse)(nil),      // 7: modulespb.DeleteResponse
+	(*HealthCheckRequest)(nil),  // 0: modules.HealthCheckRequest
+	(*HealthCheckResponse)(nil), // 1: modules.HealthCheckResponse
+	(*RegisterRequest)(nil),     // 2: modules.RegisterRequest
+	(*RegisterResponse)(nil),    // 3: modules.RegisterResponse
+	(*SetupRequest)(nil),        // 4: modules.SetupRequest
+	(*SetupResponse)(nil),       // 5: modules.SetupResponse
+	(*DeleteRequest)(nil),       // 6: modules.DeleteRequest
+	(*DeleteResponse)(nil),      // 7: modules.DeleteResponse
 }
 var file_internal_grpc_modules_modules_proto_depIdxs = []int32{
-	0, // 0: modulespb.ModulesService.HealthCheck:input_type -> modulespb.HealthCheckRequest
-	2, // 1: modulespb.ModulesService.Register:input_type -> modulespb.RegisterRequest
-	4, // 2: modulespb.ModulesService.Setup:input_type -> modulespb.SetupRequest
-	6, // 3: modulespb.ModulesService.Delete:input_type -> modulespb.DeleteRequest
-	1, // 4: modulespb.ModulesService.HealthCheck:output_type -> modulespb.HealthCheckResponse
-	3, // 5: modulespb.ModulesService.Register:output_type -> modulespb.RegisterResponse
-	5, // 6: modulespb.ModulesService.Setup:output_type -> modulespb.SetupResponse
-	7, // 7: modulespb.ModulesService.Delete:output_type -> modulespb.DeleteResponse
+	0, // 0: modules.ModulesService.HealthCheck:input_type -> modules.HealthCheckRequest
+	2, // 1: modules.ModulesService.Register:input_type -> modules.RegisterRequest
+	4, // 2: modules.ModulesService.Setup:input_type -> modules.SetupRequest
+	6, // 3: modules.ModulesService.Delete:input_type -> modules.DeleteRequest
+	1, // 4: modules.ModulesService.HealthCheck:output_type -> modules.HealthCheckResponse
+	3, // 5: modules.ModulesService.Register:output_type -> modules.RegisterResponse
+	5, // 6: modules.ModulesService.Setup:output_type -> modules.SetupResponse
+	7, // 7: modules.ModulesService.Delete:output_type -> modules.DeleteResponse
 	4, // [4:8] is the sub-list for method output_type
 	0, // [0:4] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name

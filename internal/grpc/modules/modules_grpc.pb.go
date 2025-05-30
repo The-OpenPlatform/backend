@@ -4,7 +4,7 @@
 // - protoc             v5.29.3
 // source: internal/grpc/modules/modules.proto
 
-package modulespb
+package modules
 
 import (
 	context "context"
@@ -19,10 +19,10 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	ModulesService_HealthCheck_FullMethodName = "/modulespb.ModulesService/HealthCheck"
-	ModulesService_Register_FullMethodName    = "/modulespb.ModulesService/Register"
-	ModulesService_Setup_FullMethodName       = "/modulespb.ModulesService/Setup"
-	ModulesService_Delete_FullMethodName      = "/modulespb.ModulesService/Delete"
+	ModulesService_HealthCheck_FullMethodName = "/modules.ModulesService/HealthCheck"
+	ModulesService_Register_FullMethodName    = "/modules.ModulesService/Register"
+	ModulesService_Setup_FullMethodName       = "/modules.ModulesService/Setup"
+	ModulesService_Delete_FullMethodName      = "/modules.ModulesService/Delete"
 )
 
 // ModulesServiceClient is the client API for ModulesService service.
@@ -210,7 +210,7 @@ func _ModulesService_Delete_Handler(srv interface{}, ctx context.Context, dec fu
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var ModulesService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "modulespb.ModulesService",
+	ServiceName: "modules.ModulesService",
 	HandlerType: (*ModulesServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{

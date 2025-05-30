@@ -9,7 +9,7 @@ import (
 
 	"github.com/The-OpenPlatform/backend/internal/api"
 	"github.com/The-OpenPlatform/backend/internal/db"
-	pb "github.com/The-OpenPlatform/backend/internal/grpc/modules"
+	"github.com/The-OpenPlatform/backend/internal/grpc/modules"
 )
 
 func main() {
@@ -29,11 +29,16 @@ func startGRPCServer() {
 		log.Fatalf("failed to listen: %v", err)
 	}
 
-	s := grpc.NewServer()
-	pb.RegisterModulesServiceServer(s, &grpc.ModulesServiceServer{})
+	grpcServer := grpc.NewServer()
+	registerGRPCServices(grpcServer)
 
 	log.Println("gRPC server running on :50051")
-	if err := s.Serve(lis); err != nil {
+	if err := grpcServer.Serve(lis); err != nil {
+
 		log.Fatalf("failed to serve: %v", err)
 	}
+}
+
+func registerGRPCServices(grpcServer *grpc.Server) {
+	modules.RegisterModulesServiceServer(grpcServer, &modules.Server{})
 }
