@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+package modulespb;
+
+option go_package = "./internal/grpc/modules;modulespb";
+
+service ModulesService {
+  rpc HealthCheck(HealthCheckRequest) returns (HealthCheckResponse);
+  rpc Register(RegisterRequest) returns (RegisterResponse);
+  rpc Setup(SetupRequest) returns (SetupResponse);
+  rpc Delete(DeleteRequest) returns (DeleteResponse);
+}
+
+message HealthCheckRequest {}
+message HealthCheckResponse {
+  string status = 1;
+}
+
+message RegisterRequest {
+  string username = 1;
+  string email = 2;
+}
+message RegisterResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+message SetupRequest {
+  string info = 1;
+  bytes image = 2;
+}
+message SetupResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+message DeleteRequest {
+  string user_id = 1;
+}
+message DeleteResponse {
+  bool success = 1;
+  string message = 2;
+}

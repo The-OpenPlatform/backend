@@ -1,0 +1,8 @@
+[build]
+bin = "./tmp/main"
+cmd = "go build -o ./tmp/main ./cmd/server/."
+include_dir = ["cmd", "internal"]
+log = "stdout"
+
+[run]
+cmd = "./tmp/main"  # Command to run the binary
