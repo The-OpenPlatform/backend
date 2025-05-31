@@ -10,6 +10,7 @@ type Server struct {
 
 // HealthCheck implements ModulesServiceServer
 func (s *Server) HealthCheck(ctx context.Context, req *HealthCheckRequest) (*HealthCheckResponse, error) {
+	// Also consider maintenance mode or other health checks
 	return &HealthCheckResponse{Status: "OK"}, nil
 }
 

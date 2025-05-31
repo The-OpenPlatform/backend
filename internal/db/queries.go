@@ -115,19 +115,19 @@ func executeModifyQuery(w http.ResponseWriter, query string) {
 	WriteJSONResponse(w, resp)
 }
 
-func FetchMessages() ([]string, error) {
-	var messages []string
-	err := DB.Select(&messages, "SELECT message FROM messages")
-	return messages, err
-}
-
 func WriteJSONResponse(w http.ResponseWriter, response models.QueryResponse) {
 	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(response)
+	err := json.NewEncoder(w).Encode(response)
+	if err != nil {
+		return
+	}
 }
 
 func WriteJSONError(w http.ResponseWriter, message string, statusCode int) {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(statusCode)
-	json.NewEncoder(w).Encode(models.QueryResponse{Success: false, Error: message})
+	err := json.NewEncoder(w).Encode(models.QueryResponse{Success: false, Error: message})
+	if err != nil {
+		return
+	}
 }

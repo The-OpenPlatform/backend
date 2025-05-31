@@ -2,12 +2,9 @@ package api
 
 import (
 	"encoding/json"
-	"math/rand"
+	"github.com/The-OpenPlatform/backend/internal/models"
 	"net/http"
 	"os"
-	"time"
-
-	"github.com/The-OpenPlatform/backend/internal/models"
 
 	"github.com/The-OpenPlatform/backend/internal/db"
 )
@@ -26,23 +23,6 @@ func getStatus(w http.ResponseWriter, r *http.Request) {
 		podName = "unknown"
 	}
 	w.Write([]byte(podName))
-}
-
-func getRandomMessage(w http.ResponseWriter, r *http.Request) {
-	messages, err := db.FetchMessages()
-	if err != nil {
-		http.Error(w, "Failed to query messages", http.StatusInternalServerError)
-		return
-	}
-
-	if len(messages) == 0 {
-		http.Error(w, "No messages found", http.StatusNotFound)
-		return
-	}
-
-	rand.New(rand.NewSource(time.Now().UnixNano()))
-	randomIndex := rand.Intn(len(messages))
-	w.Write([]byte(messages[randomIndex]))
 }
 
 func executeQuery(w http.ResponseWriter, r *http.Request) {

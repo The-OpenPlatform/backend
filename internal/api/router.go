@@ -25,7 +25,6 @@ func SetupRouter() http.Handler {
 	r.Route("/api", func(r chi.Router) {
 		r.Get("/", rootHandler)
 		r.Get("/hello", helloHandler)
-		r.Get("/message", getRandomMessage)
 		r.Get("/status", getStatus)
 		r.Post("/query", executeQuery)
 	})
