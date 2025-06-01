@@ -8,7 +8,7 @@ jobs:
     name: Build and push container image
     steps:
       - name: Checkout
-        uses: action/checkout@v4
+        uses: actions/checkout@v4
       - name: Build the Docker Image
         run: docker build . -t ghcr.io/The-OpenPlatform/backend@latest
 
