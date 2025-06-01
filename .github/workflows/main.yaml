@@ -10,5 +10,5 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Build the Docker Image
-        run: docker build . -t ghcr.io/The-OpenPlatform/backend -f Dockerfile --target production
+        run: docker build . -t ghcr.io/the-openplatform/backend -f Dockerfile --target production
 
