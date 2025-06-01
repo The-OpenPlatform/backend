@@ -2,7 +2,7 @@
 // versions:
 // - protoc-gen-go-grpc v1.5.1
 // - protoc             v5.29.3
-// source: internal/grpc/modules/modules.proto
+// source: proto/modules.proto
 
 package modules
 
@@ -231,5 +231,5 @@ var ModulesService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "internal/grpc/modules/modules.proto",
+	Metadata: "proto/modules.proto",
 }

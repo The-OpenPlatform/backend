@@ -2,6 +2,8 @@ package modules
 
 import (
 	"context"
+
+	"github.com/The-OpenPlatform/backend/internal/db"
 )
 
 type Server struct {
@@ -16,7 +18,25 @@ func (s *Server) HealthCheck(ctx context.Context, req *HealthCheckRequest) (*Hea
 
 // Register implements ModulesServiceServer
 func (s *Server) Register(ctx context.Context, req *RegisterRequest) (*RegisterResponse, error) {
-	return &RegisterResponse{Success: true, Message: "User registered"}, nil
+	var message string = "Module creation failed!"
+	var exists bool
+	var uid string
+
+	query := `SELECT EXISTS (SELECT 1 FROM modules WHERE name = $1)`
+	err := db.DB.Get(&exists, query, req.Name)
+	if err == nil {
+		if !exists {
+			query = `INSERT INTO modules (name, ip_port) VALUES ($1) RETURNING module_id`
+			err = db.DB.Get(&uid, query, req.Name)
+			if err == nil {
+				message = "Module created successfully!"
+				return &RegisterResponse{Success: true, ModuleId: uid, Message: message}, nil
+			}
+		} else {
+			message = "Module with the same name already exists."
+		}
+	}
+	return &RegisterResponse{Success: false, ModuleId: "", Message: message}, err
 }
 
 // Setup implements ModulesServiceServer

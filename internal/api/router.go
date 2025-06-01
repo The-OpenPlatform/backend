@@ -26,7 +26,6 @@ func SetupRouter() http.Handler {
 		r.Get("/", rootHandler)
 		r.Get("/hello", helloHandler)
 		r.Get("/status", getStatus)
-		r.Post("/query", executeQuery)
 	})
 
 	return r

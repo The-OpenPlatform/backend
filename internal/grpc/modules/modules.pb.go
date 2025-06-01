@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.36.6
 // 	protoc        v5.29.3
-// source: internal/grpc/modules/modules.proto
+// source: proto/modules.proto
 
 package modules
 
@@ -29,7 +29,7 @@ type HealthCheckRequest struct {
 
 func (x *HealthCheckRequest) Reset() {
 	*x = HealthCheckRequest{}
-	mi := &file_internal_grpc_modules_modules_proto_msgTypes[0]
+	mi := &file_proto_modules_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -41,7 +41,7 @@ func (x *HealthCheckRequest) String() string {
 func (*HealthCheckRequest) ProtoMessage() {}
 
 func (x *HealthCheckRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_internal_grpc_modules_modules_proto_msgTypes[0]
+	mi := &file_proto_modules_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -54,7 +54,7 @@ func (x *HealthCheckRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use HealthCheckRequest.ProtoReflect.Descriptor instead.
 func (*HealthCheckRequest) Descriptor() ([]byte, []int) {
-	return file_internal_grpc_modules_modules_proto_rawDescGZIP(), []int{0}
+	return file_proto_modules_proto_rawDescGZIP(), []int{0}
 }
 
 type HealthCheckResponse struct {
@@ -66,7 +66,7 @@ type HealthCheckResponse struct {
 
 func (x *HealthCheckResponse) Reset() {
 	*x = HealthCheckResponse{}
-	mi := &file_internal_grpc_modules_modules_proto_msgTypes[1]
+	mi := &file_proto_modules_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -78,7 +78,7 @@ func (x *HealthCheckResponse) String() string {
 func (*HealthCheckResponse) ProtoMessage() {}
 
 func (x *HealthCheckResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_internal_grpc_modules_modules_proto_msgTypes[1]
+	mi := &file_proto_modules_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -91,7 +91,7 @@ func (x *HealthCheckResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use HealthCheckResponse.ProtoReflect.Descriptor instead.
 func (*HealthCheckResponse) Descriptor() ([]byte, []int) {
-	return file_internal_grpc_modules_modules_proto_rawDescGZIP(), []int{1}
+	return file_proto_modules_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *HealthCheckResponse) GetStatus() string {
@@ -103,15 +103,16 @@ func (x *HealthCheckResponse) GetStatus() string {
 
 type RegisterRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Username      string                 `protobuf:"bytes,1,opt,name=username,proto3" json:"username,omitempty"`
-	Email         string                 `protobuf:"bytes,2,opt,name=email,proto3" json:"email,omitempty"`
+	Name          string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Ip            string                 `protobuf:"bytes,3,opt,name=ip,proto3" json:"ip,omitempty"`
+	Port          int32                  `protobuf:"varint,4,opt,name=port,proto3" json:"port,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *RegisterRequest) Reset() {
 	*x = RegisterRequest{}
-	mi := &file_internal_grpc_modules_modules_proto_msgTypes[2]
+	mi := &file_proto_modules_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -123,7 +124,7 @@ func (x *RegisterRequest) String() string {
 func (*RegisterRequest) ProtoMessage() {}
 
 func (x *RegisterRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_internal_grpc_modules_modules_proto_msgTypes[2]
+	mi := &file_proto_modules_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -136,34 +137,42 @@ func (x *RegisterRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RegisterRequest.ProtoReflect.Descriptor instead.
 func (*RegisterRequest) Descriptor() ([]byte, []int) {
-	return file_internal_grpc_modules_modules_proto_rawDescGZIP(), []int{2}
+	return file_proto_modules_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *RegisterRequest) GetUsername() string {
+func (x *RegisterRequest) GetName() string {
 	if x != nil {
-		return x.Username
+		return x.Name
 	}
 	return ""
 }
 
-func (x *RegisterRequest) GetEmail() string {
+func (x *RegisterRequest) GetIp() string {
 	if x != nil {
-		return x.Email
+		return x.Ip
 	}
 	return ""
+}
+
+func (x *RegisterRequest) GetPort() int32 {
+	if x != nil {
+		return x.Port
+	}
+	return 0
 }
 
 type RegisterResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
-	Message       string                 `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`
+	ModuleId      string                 `protobuf:"bytes,2,opt,name=module_id,json=moduleId,proto3" json:"module_id,omitempty"`
+	Message       string                 `protobuf:"bytes,3,opt,name=message,proto3" json:"message,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *RegisterResponse) Reset() {
 	*x = RegisterResponse{}
-	mi := &file_internal_grpc_modules_modules_proto_msgTypes[3]
+	mi := &file_proto_modules_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -175,7 +184,7 @@ func (x *RegisterResponse) String() string {
 func (*RegisterResponse) ProtoMessage() {}
 
 func (x *RegisterResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_internal_grpc_modules_modules_proto_msgTypes[3]
+	mi := &file_proto_modules_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -188,7 +197,7 @@ func (x *RegisterResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RegisterResponse.ProtoReflect.Descriptor instead.
 func (*RegisterResponse) Descriptor() ([]byte, []int) {
-	return file_internal_grpc_modules_modules_proto_rawDescGZIP(), []int{3}
+	return file_proto_modules_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *RegisterResponse) GetSuccess() bool {
@@ -196,6 +205,13 @@ func (x *RegisterResponse) GetSuccess() bool {
 		return x.Success
 	}
 	return false
+}
+
+func (x *RegisterResponse) GetModuleId() string {
+	if x != nil {
+		return x.ModuleId
+	}
+	return ""
 }
 
 func (x *RegisterResponse) GetMessage() string {
@@ -215,7 +231,7 @@ type SetupRequest struct {
 
 func (x *SetupRequest) Reset() {
 	*x = SetupRequest{}
-	mi := &file_internal_grpc_modules_modules_proto_msgTypes[4]
+	mi := &file_proto_modules_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -227,7 +243,7 @@ func (x *SetupRequest) String() string {
 func (*SetupRequest) ProtoMessage() {}
 
 func (x *SetupRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_internal_grpc_modules_modules_proto_msgTypes[4]
+	mi := &file_proto_modules_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -240,7 +256,7 @@ func (x *SetupRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetupRequest.ProtoReflect.Descriptor instead.
 func (*SetupRequest) Descriptor() ([]byte, []int) {
-	return file_internal_grpc_modules_modules_proto_rawDescGZIP(), []int{4}
+	return file_proto_modules_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *SetupRequest) GetInfo() string {
@@ -267,7 +283,7 @@ type SetupResponse struct {
 
 func (x *SetupResponse) Reset() {
 	*x = SetupResponse{}
-	mi := &file_internal_grpc_modules_modules_proto_msgTypes[5]
+	mi := &file_proto_modules_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -279,7 +295,7 @@ func (x *SetupResponse) String() string {
 func (*SetupResponse) ProtoMessage() {}
 
 func (x *SetupResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_internal_grpc_modules_modules_proto_msgTypes[5]
+	mi := &file_proto_modules_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -292,7 +308,7 @@ func (x *SetupResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetupResponse.ProtoReflect.Descriptor instead.
 func (*SetupResponse) Descriptor() ([]byte, []int) {
-	return file_internal_grpc_modules_modules_proto_rawDescGZIP(), []int{5}
+	return file_proto_modules_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *SetupResponse) GetSuccess() bool {
@@ -318,7 +334,7 @@ type DeleteRequest struct {
 
 func (x *DeleteRequest) Reset() {
 	*x = DeleteRequest{}
-	mi := &file_internal_grpc_modules_modules_proto_msgTypes[6]
+	mi := &file_proto_modules_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -330,7 +346,7 @@ func (x *DeleteRequest) String() string {
 func (*DeleteRequest) ProtoMessage() {}
 
 func (x *DeleteRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_internal_grpc_modules_modules_proto_msgTypes[6]
+	mi := &file_proto_modules_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -343,7 +359,7 @@ func (x *DeleteRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteRequest.ProtoReflect.Descriptor instead.
 func (*DeleteRequest) Descriptor() ([]byte, []int) {
-	return file_internal_grpc_modules_modules_proto_rawDescGZIP(), []int{6}
+	return file_proto_modules_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *DeleteRequest) GetUserId() string {
@@ -363,7 +379,7 @@ type DeleteResponse struct {
 
 func (x *DeleteResponse) Reset() {
 	*x = DeleteResponse{}
-	mi := &file_internal_grpc_modules_modules_proto_msgTypes[7]
+	mi := &file_proto_modules_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -375,7 +391,7 @@ func (x *DeleteResponse) String() string {
 func (*DeleteResponse) ProtoMessage() {}
 
 func (x *DeleteResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_internal_grpc_modules_modules_proto_msgTypes[7]
+	mi := &file_proto_modules_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -388,7 +404,7 @@ func (x *DeleteResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteResponse.ProtoReflect.Descriptor instead.
 func (*DeleteResponse) Descriptor() ([]byte, []int) {
-	return file_internal_grpc_modules_modules_proto_rawDescGZIP(), []int{7}
+	return file_proto_modules_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *DeleteResponse) GetSuccess() bool {
@@ -405,20 +421,22 @@ func (x *DeleteResponse) GetMessage() string {
 	return ""
 }
 
-var File_internal_grpc_modules_modules_proto protoreflect.FileDescriptor
+var File_proto_modules_proto protoreflect.FileDescriptor
 
-const file_internal_grpc_modules_modules_proto_rawDesc = "" +
+const file_proto_modules_proto_rawDesc = "" +
 	"\n" +
-	"#internal/grpc/modules/modules.proto\x12\amodules\"\x14\n" +
+	"\x13proto/modules.proto\x12\amodules\"\x14\n" +
 	"\x12HealthCheckRequest\"-\n" +
 	"\x13HealthCheckResponse\x12\x16\n" +
-	"\x06status\x18\x01 \x01(\tR\x06status\"C\n" +
-	"\x0fRegisterRequest\x12\x1a\n" +
-	"\busername\x18\x01 \x01(\tR\busername\x12\x14\n" +
-	"\x05email\x18\x02 \x01(\tR\x05email\"F\n" +
+	"\x06status\x18\x01 \x01(\tR\x06status\"I\n" +
+	"\x0fRegisterRequest\x12\x12\n" +
+	"\x04name\x18\x01 \x01(\tR\x04name\x12\x0e\n" +
+	"\x02ip\x18\x03 \x01(\tR\x02ip\x12\x12\n" +
+	"\x04port\x18\x04 \x01(\x05R\x04port\"c\n" +
 	"\x10RegisterResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess\x12\x18\n" +
-	"\amessage\x18\x02 \x01(\tR\amessage\"8\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\x12\x1b\n" +
+	"\tmodule_id\x18\x02 \x01(\tR\bmoduleId\x12\x18\n" +
+	"\amessage\x18\x03 \x01(\tR\amessage\"8\n" +
 	"\fSetupRequest\x12\x12\n" +
 	"\x04info\x18\x01 \x01(\tR\x04info\x12\x14\n" +
 	"\x05image\x18\x02 \x01(\fR\x05image\"C\n" +
@@ -437,19 +455,19 @@ const file_internal_grpc_modules_modules_proto_rawDesc = "" +
 	"\x06Delete\x12\x16.modules.DeleteRequest\x1a\x17.modules.DeleteResponseB!Z\x1f./internal/grpc/modules;modulesb\x06proto3"
 
 var (
-	file_internal_grpc_modules_modules_proto_rawDescOnce sync.Once
-	file_internal_grpc_modules_modules_proto_rawDescData []byte
+	file_proto_modules_proto_rawDescOnce sync.Once
+	file_proto_modules_proto_rawDescData []byte
 )
 
-func file_internal_grpc_modules_modules_proto_rawDescGZIP() []byte {
-	file_internal_grpc_modules_modules_proto_rawDescOnce.Do(func() {
-		file_internal_grpc_modules_modules_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_internal_grpc_modules_modules_proto_rawDesc), len(file_internal_grpc_modules_modules_proto_rawDesc)))
+func file_proto_modules_proto_rawDescGZIP() []byte {
+	file_proto_modules_proto_rawDescOnce.Do(func() {
+		file_proto_modules_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_proto_modules_proto_rawDesc), len(file_proto_modules_proto_rawDesc)))
 	})
-	return file_internal_grpc_modules_modules_proto_rawDescData
+	return file_proto_modules_proto_rawDescData
 }
 
-var file_internal_grpc_modules_modules_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
-var file_internal_grpc_modules_modules_proto_goTypes = []any{
+var file_proto_modules_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
+var file_proto_modules_proto_goTypes = []any{
 	(*HealthCheckRequest)(nil),  // 0: modules.HealthCheckRequest
 	(*HealthCheckResponse)(nil), // 1: modules.HealthCheckResponse
 	(*RegisterRequest)(nil),     // 2: modules.RegisterRequest
@@ -459,7 +477,7 @@ var file_internal_grpc_modules_modules_proto_goTypes = []any{
 	(*DeleteRequest)(nil),       // 6: modules.DeleteRequest
 	(*DeleteResponse)(nil),      // 7: modules.DeleteResponse
 }
-var file_internal_grpc_modules_modules_proto_depIdxs = []int32{
+var file_proto_modules_proto_depIdxs = []int32{
 	0, // 0: modules.ModulesService.HealthCheck:input_type -> modules.HealthCheckRequest
 	2, // 1: modules.ModulesService.Register:input_type -> modules.RegisterRequest
 	4, // 2: modules.ModulesService.Setup:input_type -> modules.SetupRequest
@@ -475,26 +493,26 @@ var file_internal_grpc_modules_modules_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for field type_name
 }
 
-func init() { file_internal_grpc_modules_modules_proto_init() }
-func file_internal_grpc_modules_modules_proto_init() {
-	if File_internal_grpc_modules_modules_proto != nil {
+func init() { file_proto_modules_proto_init() }
+func file_proto_modules_proto_init() {
+	if File_proto_modules_proto != nil {
 		return
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_internal_grpc_modules_modules_proto_rawDesc), len(file_internal_grpc_modules_modules_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_proto_modules_proto_rawDesc), len(file_proto_modules_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   8,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_internal_grpc_modules_modules_proto_goTypes,
-		DependencyIndexes: file_internal_grpc_modules_modules_proto_depIdxs,
-		MessageInfos:      file_internal_grpc_modules_modules_proto_msgTypes,
+		GoTypes:           file_proto_modules_proto_goTypes,
+		DependencyIndexes: file_proto_modules_proto_depIdxs,
+		MessageInfos:      file_proto_modules_proto_msgTypes,
 	}.Build()
-	File_internal_grpc_modules_modules_proto = out.File
-	file_internal_grpc_modules_modules_proto_goTypes = nil
-	file_internal_grpc_modules_modules_proto_depIdxs = nil
+	File_proto_modules_proto = out.File
+	file_proto_modules_proto_goTypes = nil
+	file_proto_modules_proto_depIdxs = nil
 }

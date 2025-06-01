@@ -17,18 +17,22 @@ message HealthCheckResponse {
 }
 
 message RegisterRequest {
-  string username = 1;
-  string email = 2;
+  string name = 1;
+  string ip = 3;
+  int32 port = 4;
 }
+
 message RegisterResponse {
   bool success = 1;
-  string message = 2;
+  string module_id = 2;
+  string message = 3;
 }
 
 message SetupRequest {
   string info = 1;
   bytes image = 2;
 }
+
 message SetupResponse {
   bool success = 1;
   string message = 2;
@@ -37,6 +41,7 @@ message SetupResponse {
 message DeleteRequest {
   string user_id = 1;
 }
+
 message DeleteResponse {
   bool success = 1;
   string message = 2;
