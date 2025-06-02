@@ -104,8 +104,8 @@ func (x *HealthCheckResponse) GetStatus() string {
 type RegisterRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Name          string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	Ip            string                 `protobuf:"bytes,3,opt,name=ip,proto3" json:"ip,omitempty"`
-	Port          int32                  `protobuf:"varint,4,opt,name=port,proto3" json:"port,omitempty"`
+	Ip            string                 `protobuf:"bytes,2,opt,name=ip,proto3" json:"ip,omitempty"`
+	Port          int32                  `protobuf:"varint,3,opt,name=port,proto3" json:"port,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -223,8 +223,9 @@ func (x *RegisterResponse) GetMessage() string {
 
 type SetupRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Info          string                 `protobuf:"bytes,1,opt,name=info,proto3" json:"info,omitempty"`
+	ModuleId      string                 `protobuf:"bytes,1,opt,name=module_id,json=moduleId,proto3" json:"module_id,omitempty"`
 	Image         []byte                 `protobuf:"bytes,2,opt,name=image,proto3" json:"image,omitempty"`
+	Fileformat    string                 `protobuf:"bytes,3,opt,name=fileformat,proto3" json:"fileformat,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -259,9 +260,9 @@ func (*SetupRequest) Descriptor() ([]byte, []int) {
 	return file_proto_modules_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *SetupRequest) GetInfo() string {
+func (x *SetupRequest) GetModuleId() string {
 	if x != nil {
-		return x.Info
+		return x.ModuleId
 	}
 	return ""
 }
@@ -271,6 +272,13 @@ func (x *SetupRequest) GetImage() []byte {
 		return x.Image
 	}
 	return nil
+}
+
+func (x *SetupRequest) GetFileformat() string {
+	if x != nil {
+		return x.Fileformat
+	}
+	return ""
 }
 
 type SetupResponse struct {
@@ -327,7 +335,7 @@ func (x *SetupResponse) GetMessage() string {
 
 type DeleteRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	UserId        string                 `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	ModuleId      string                 `protobuf:"bytes,1,opt,name=module_id,json=moduleId,proto3" json:"module_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -362,9 +370,9 @@ func (*DeleteRequest) Descriptor() ([]byte, []int) {
 	return file_proto_modules_proto_rawDescGZIP(), []int{6}
 }
 
-func (x *DeleteRequest) GetUserId() string {
+func (x *DeleteRequest) GetModuleId() string {
 	if x != nil {
-		return x.UserId
+		return x.ModuleId
 	}
 	return ""
 }
@@ -431,20 +439,23 @@ const file_proto_modules_proto_rawDesc = "" +
 	"\x06status\x18\x01 \x01(\tR\x06status\"I\n" +
 	"\x0fRegisterRequest\x12\x12\n" +
 	"\x04name\x18\x01 \x01(\tR\x04name\x12\x0e\n" +
-	"\x02ip\x18\x03 \x01(\tR\x02ip\x12\x12\n" +
-	"\x04port\x18\x04 \x01(\x05R\x04port\"c\n" +
+	"\x02ip\x18\x02 \x01(\tR\x02ip\x12\x12\n" +
+	"\x04port\x18\x03 \x01(\x05R\x04port\"c\n" +
 	"\x10RegisterResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12\x1b\n" +
 	"\tmodule_id\x18\x02 \x01(\tR\bmoduleId\x12\x18\n" +
-	"\amessage\x18\x03 \x01(\tR\amessage\"8\n" +
-	"\fSetupRequest\x12\x12\n" +
-	"\x04info\x18\x01 \x01(\tR\x04info\x12\x14\n" +
-	"\x05image\x18\x02 \x01(\fR\x05image\"C\n" +
+	"\amessage\x18\x03 \x01(\tR\amessage\"a\n" +
+	"\fSetupRequest\x12\x1b\n" +
+	"\tmodule_id\x18\x01 \x01(\tR\bmoduleId\x12\x14\n" +
+	"\x05image\x18\x02 \x01(\fR\x05image\x12\x1e\n" +
+	"\n" +
+	"fileformat\x18\x03 \x01(\tR\n" +
+	"fileformat\"C\n" +
 	"\rSetupResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12\x18\n" +
-	"\amessage\x18\x02 \x01(\tR\amessage\"(\n" +
-	"\rDeleteRequest\x12\x17\n" +
-	"\auser_id\x18\x01 \x01(\tR\x06userId\"D\n" +
+	"\amessage\x18\x02 \x01(\tR\amessage\",\n" +
+	"\rDeleteRequest\x12\x1b\n" +
+	"\tmodule_id\x18\x01 \x01(\tR\bmoduleId\"D\n" +
 	"\x0eDeleteResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12\x18\n" +
 	"\amessage\x18\x02 \x01(\tR\amessage2\x8e\x02\n" +

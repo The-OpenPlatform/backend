@@ -18,8 +18,8 @@ message HealthCheckResponse {
 
 message RegisterRequest {
   string name = 1;
-  string ip = 3;
-  int32 port = 4;
+  string ip = 2;
+  int32 port = 3;
 }
 
 message RegisterResponse {
@@ -29,8 +29,9 @@ message RegisterResponse {
 }
 
 message SetupRequest {
-  string info = 1;
+  string module_id = 1;
   bytes image = 2;
+  string fileformat = 3;
 }
 
 message SetupResponse {
@@ -39,7 +40,7 @@ message SetupResponse {
 }
 
 message DeleteRequest {
-  string user_id = 1;
+  string module_id = 1;
 }
 
 message DeleteResponse {
