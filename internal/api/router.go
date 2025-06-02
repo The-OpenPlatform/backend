@@ -1,6 +1,7 @@
 package api
 
 import (
+	"github.com/The-OpenPlatform/backend/internal/db"
 	"net/http"
 
 	"github.com/go-chi/chi/v5"
@@ -26,6 +27,7 @@ func SetupRouter() http.Handler {
 		r.Get("/", rootHandler)
 		r.Get("/hello", helloHandler)
 		r.Get("/status", getStatus)
+		r.Get("/modules", GetModulesWithImages(db.DB))
 	})
 
 	return r
